@@ -1,12 +1,14 @@
 var Twitter = require('twitter');
+var credentials = require('./credentials.json')
+
 var client = new Twitter({
-	consumer_key: CONSUMER_KEY_GOES_HERE,
-	consumer_secret: CONSUMER_SECRET_GOES_HERE,
-	access_token_key: ACCESS_TOKEN_KEY_GOES_HERE,
-	access_token_secret: ACCESS_TOKEN_SECRET_GOES_HERE
+	consumer_key: credentials.consumer_key,
+	consumer_secret: credentials.consumer_secret,
+	access_token_key: credentials.access_token_key,
+	access_token_secret: credentials.access_token_secret
 });
 
-var params = {screen_name: ACCOUNT_SCREENNAME_GOES_HERE};
+var params = {screen_name: credentials.screen_name};
 client.get('statuses/user_timeline', params, function (err, data) {
   if (err) {
     console.log(err);
